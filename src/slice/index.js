@@ -1,1 +1,1 @@
-export * from "./todoSlice"
+export * from "./fetchSlice"

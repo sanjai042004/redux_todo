@@ -8,6 +8,6 @@ import { Todo } from "./pages/Todo";
 
 createRoot(document.getElementById("root")).render(
   <Provider store={store}>
-  <Todo />
+  <Todo/>
   </Provider>
 );
