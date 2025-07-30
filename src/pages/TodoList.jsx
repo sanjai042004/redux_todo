@@ -6,34 +6,35 @@ import { TodoItem } from "./TodoItem";
 export const TodoList = () => {
   const dispatch = useDispatch();
 
-  // 🛡️ Fallbacks if undefined
-
-  const todoState = useSelector((state) => state.todo || {});
-  
-  const todos = todoState.todos || [];
-  const loading = todoState.loading || false;
-  const error = todoState.error || null;
+  const {
+    todos = [],
+    loading = false,
+    error = null,
+  } = useSelector((state) => state.todo || {});
 
   useEffect(() => {
     dispatch(fetchTodos());
   }, [dispatch]);
 
+  if (loading)
+    return <p className="text-center text-blue-500 text-lg">Loading...</p>;
 
-if (loading) return <p>Loading.....</p>;
-
-if (error) return <p className="text-red-500">Error: {error}</p>;
+  if (error)
+    return <p className="text-center text-red-500 text-lg">Error: {error}</p>;
 
   if (todos.length === 0) {
-
-    return <p className="font-extrabold text-2xl text-center text-gray-500">No todos yet. Add one!</p>;
+    return (
+      <p className="text-center text-gray-500 text-xl font-semibold">
+        No todos yet. Add one!
+      </p>
+    );
   }
 
   return (
-    <div className="space-y-2">
-      {todos.map((todo) => {
-        return <TodoItem key={todo._id} todo={todo} />
-      } 
-      )}
+    <div className="space-y-4">
+      {todos.map((todo) => (
+        <TodoItem key={todo._id} todo={todo} />
+      ))}
     </div>
   );
 };

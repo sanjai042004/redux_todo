@@ -1,18 +1,18 @@
-import { TodoInput } from './TodoInput'
-import { TodoList } from './TodoList'
+import { TodoInput } from "./TodoInput";
+import { TodoList } from "./TodoList";
 import { BsClipboardCheckFill } from "react-icons/bs";
 
 export const Todo = () => {
-
-  
   return (
-    <div className='flex flex-col min-h-screen  items-center pt-10 bg-blue-50 '>
-      <div className='w-full max-w-md flex flex-col items-center gap-6 '>
-        <h1 className=' flex gap-2 text-3xl text-blue-400 font-extrabold'><BsClipboardCheckFill />Redux toDo-List</h1>
-        
+    <div className="min-h-screen bg-blue-50 flex flex-col items-center pt-10 px-4">
+      <h1 className="text-3xl font-bold text-blue-600 mb-6 flex items-center gap-2">
+        <BsClipboardCheckFill />
+        Redux toDo-List
+      </h1>
+      <div className="w-full max-w-2xl">
         <TodoInput />
         <TodoList />
       </div>
     </div>
-  )
-}
+  );
+};

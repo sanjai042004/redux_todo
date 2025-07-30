@@ -1,7 +1,7 @@
 import { useDispatch } from "react-redux";
 // import { CiEdit } from "react-icons/ci";
 // import { MdCancel } from "react-icons/md";
-import {deleteTodo,setTask,setEditId, updateTodo,} from "../slice";
+import { deleteTodo, setTask, setEditId, updateTodo } from "../slice";
 
 export const TodoItem = ({ todo }) => {
   const dispatch = useDispatch();
@@ -15,35 +15,45 @@ export const TodoItem = ({ todo }) => {
     dispatch(deleteTodo(todo._id));
   };
 
-  const togglecomplete=()=>{
-    dispatch(updateTodo({
-      id:todo._id,
-      task:todo.title,
-      isCompleted:!todo.isCompleted
-    }))
-  }
+  const toggleComplete = () => {
+    dispatch(
+      updateTodo({
+        id: todo._id,
+        task: todo.title,
+        isCompleted: !todo.isCompleted,
+      })
+    );
+  };
 
   return (
-<div className="flex w-3xl justify-between items-start bg-gray-50 py-5 px-9 rounded-2xl">
-  <div className="flex items-center gap-2 mb-2">
-    <input 
-      type="checkbox"
-      checked={todo.isCompleted}
-      onChange={togglecomplete}
-    />
-   <span
-  className={`font-serif  w-[300px] break-words mb-2 ${
-    todo.isCompleted ? "line-through text-gray-400" : ""
-  }`}
->
-  {todo.title}
-</span>
-  </div>
-  <div className="flex gap-6 ">
-    <button onClick={handleEdit} >✏️</button>
-    <button onClick={handleDelete} className="h-3" >✖️</button>
-  </div>
-</div>
-
+    <div className="flex justify-between items-center bg-white shadow px-6 py-6 rounded-xl w-full">
+      <div className="flex items-center gap-3">
+        <input className="hover:cursor-pointer "
+          type="checkbox"
+          checked={todo.isCompleted}
+          onChange={toggleComplete}
+        />
+        <span
+          className={`font-sans  ${todo.isCompleted ? "line-through text-gray-400" : "text-gray-800" }`}
+          style={{ wordBreak: "break-word" }}
+        >
+          {todo.title}
+        </span>
+      </div>
+      <div className="flex items-center gap-3 text-lg">
+        <button
+          onClick={handleEdit}
+          className="text-orange-500 hover:text-orange-600"
+        >
+          ✏️
+        </button>
+        <button
+          onClick={handleDelete}
+          className="text-purple-600 hover:text-purple-700"
+        >
+          ✖️
+        </button>
+      </div>
+    </div>
   );
 };
