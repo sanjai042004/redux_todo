@@ -1,12 +1,30 @@
-# React + Vite
+# 📝 Redux Todo App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A fully functional Todo App built using **React**, **Redux Toolkit**, and hosted on **Firebase**. Users can add, edit, delete, and update todos with a clean and responsive UI.
 
-Currently, two official plugins are available:
+🔗 **Live Website:** [https://to-do-b4253.web.app/](https://to-do-b4253.web.app/)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## ⚙️ Features
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- ✅ Add new tasks
+- ✏️ Edit existing tasks
+- 🗑️ Delete tasks
+- ✅ Mark tasks as completed
+- 🔄 Live state updates using Redux Toolkit
+- ☁️ Firebase hosting
+
+---
+
+## 🛠️ Tech Stack
+
+- **Frontend:** React, Redux Toolkit
+- **State Management:** Redux
+- **Styling:** Tailwind CSS
+- **Hosting:** Firebase
+
+---
+
+## 📁 Folder Structure
+
