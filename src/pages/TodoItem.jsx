@@ -1,6 +1,4 @@
 import { useDispatch } from "react-redux";
-// import { CiEdit } from "react-icons/ci";
-// import { MdCancel } from "react-icons/md";
 import { deleteTodo, setTask, setEditId, updateTodo } from "../slice";
 
 export const TodoItem = ({ todo }) => {
@@ -26,31 +24,26 @@ export const TodoItem = ({ todo }) => {
   };
 
   return (
-    <div className="flex justify-between items-center bg-white shadow px-6 py-6 rounded-xl w-full">
-      <div className="flex items-center gap-3">
-        <input className="hover:cursor-pointer "
+    <div className="flex flex-row sm:flex-row justify-between items-start sm:items-center bg-white shadow px-4 py-4 sm:px-6 sm:py-5 rounded-xl max-w-2xl gap-3">
+      <div className="flex items-start sm:items-center gap-3 w-full sm:w-auto">
+        <input
           type="checkbox"
           checked={todo.isCompleted}
           onChange={toggleComplete}
-        />
-        <span
-          className={`font-sans  ${todo.isCompleted ? "line-through text-gray-400" : "text-gray-800" }`}
-          style={{ wordBreak: "break-word" }}
-        >
+          className="mt-1 sm:mt-0 cursor-pointer"/>
+          
+        <span className={`text-base sm:text-lg ${
+            todo.isCompleted ? "line-through text-gray-400" : "text-gray-800"
+          } break-words`}>
           {todo.title}
         </span>
       </div>
-      <div className="flex items-center gap-3 text-lg">
-        <button
-          onClick={handleEdit}
-          className="text-orange-500 hover:text-orange-600"
-        >
+
+      <div className="flex gap-4 text-lg">
+        <button onClick={handleEdit} className="text-orange-500 hover:text-orange-600 transition" >
           ✏️
         </button>
-        <button
-          onClick={handleDelete}
-          className="text-purple-600 hover:text-purple-700"
-        >
+        <button onClick={handleDelete} className="text-purple-600 hover:text-purple-700 transition">
           ✖️
         </button>
       </div>

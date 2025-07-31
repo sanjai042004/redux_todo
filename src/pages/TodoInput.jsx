@@ -1,44 +1,48 @@
+import { useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setTask, addTodo, updateTodo, resetTask } from "../slice";
 
 export const TodoInput = () => {
   const dispatch = useDispatch();
+  const { task, editId } = useSelector((state) => state.todo);
+  const trimmedTask = task.trim();
 
-  const task = useSelector((state) => state.todo.task);
-  const editId = useSelector((state) => state.todo.editId);
+  const handleChange = useCallback((e) => {
+    dispatch(setTask(e.target.value));
+  }, [dispatch]);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = useCallback((e) => {
     e.preventDefault();
-
-    if (!task?.trim()) return;
+    if (!trimmedTask) return;
 
     if (editId) {
-      dispatch(updateTodo({ id: editId, task }));
+      dispatch(updateTodo({ id: editId, task: trimmedTask }));
     } else {
-      dispatch(addTodo(task));
+      dispatch(addTodo(trimmedTask));
     }
 
     dispatch(resetTask());
-  };
+  }, [dispatch, editId, trimmedTask]);
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      className="flex items-center gap-4 bg-white p-6 rounded-2xl shadow mb-10"
-    >
-      <input
-        type="text"
-        placeholder="Enter a task..."
-        value={task}
-        onChange={(e) => dispatch(setTask(e.target.value))}
-        className="flex-1 border border-blue-300 px-4 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
-      />
-      <button
-        type="submit"
-        className="bg-green-400 hover:bg-green-500 text-white px-4 py-2 rounded-md font-semibold transition"
-      >
-        {editId ? "Update" : "Add"}
-      </button>
-    </form>
+ <form
+  onSubmit={handleSubmit}
+  className="flex flex-row items-center gap-2 bg-white p-3 rounded-xl shadow-md w-full"
+>
+  <input
+    type="text"
+    value={task}
+    onChange={handleChange}
+    placeholder="Enter a task..."
+    className="w-2/3 sm:flex-1 border border-blue-300 px-3 py-2 rounded-md focus:ring-2 focus:ring-blue-400 text-sm"
+  />
+  <button
+    className="w-1/3 sm:w-auto bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-md text-sm"
+  >
+    {editId ? "Update" : "Add"}
+  </button>
+</form>
+
+
   );
 };

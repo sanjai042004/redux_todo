@@ -26,5 +26,4 @@ A fully functional Todo App built using **React**, **Redux Toolkit**, and hosted
 
 ---
 
-## 📁 Folder Structure
 
